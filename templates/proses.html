@@ -1,0 +1,96 @@
+<!------ Include the above in your HEAD tag ---------->
+<title>Reviewer LSA/LSI</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <a href="index.php"><h1>Peringkasan Berita Menggunakan Metode Cross Latent Semantic Analysis</h1></a>
+  <form action="proses" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <!-- <input type="text" class="form-control google-search" name="kalimat" value="" placeholder="{{ sebelum_preprocessing }}" required /> -->
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="kalimat">{{ sebelum_preprocessing }}</textarea>
+        <label for="floatingTextarea2"></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control google-search" name="input_kalimat" value="" placeholder="jumlah masukan kalimat : {{ jumlah_masukan_kalimat }}" placeholder="" />
+    </div>
+    <div class="form-group">
+      <button type="submit" name="Kirim" class="btn btn-primary">Proses</button>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <h2>Hasil Peringkasan Berita dengan CLSA</h2>
+  <p></p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Kesimpulan</a></li>
+    <li><a data-toggle="tab" href="#menu1">PreProcessing</a></li>
+    <li><a data-toggle="tab" href="#menu2">TF IDF</a></li>
+    <li><a data-toggle="tab" href="#menu3">CLSA</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <br />
+      <div class="container">
+        <table class="table">
+          <tbody>
+            <tr class="success">
+              <td>Kalimat Asli</td>
+              <td>{{ sebelum_preprocessing }}</td>
+            </tr>
+            <tr class="info">
+              <td>Hasil Peringkasan CLSA</td>
+              <td>{% for table_clsa in sentences_clsa %} {{ table_clsa | safe }} {% endfor %}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Sebelum PreProcessing</h3>
+      {{ sebelum_preprocessing }}
+      <h3>Sesudah PreProcessing</h3>
+      {% for table in sesudah_preprocessing %} {{ table | safe }} {% endfor %}
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <br />
+      <div class="row" id="customers">
+        <div class="col-sm-6 col-md-offset-3">{% for table in tables_TFIDF %} {{ table | safe }} {% endfor %}</div>
+      </div>
+      <br />
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <br />
+      <div class="row">
+        <div class="col-sm-6" id="customers">
+          <h3>Latent Semantic Analysis</h3>
+          {% for table_LSA in tables_LSA %} {{ table_LSA | safe }} {% endfor %}
+        </div>
+        <div class="col-sm-6" id="customers">
+          <h3>Ranking Latent Semantic Analysis</h3>
+          {% for sum_LSA in sum_tables_LSA %} {{ sum_LSA | safe }} {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" id="customers">
+          <h3>Cross Latent Semantic Analysis</h3>
+          {% for table_CLSA in tables_CLSA %} {{ table_CLSA | safe }} {% endfor %}
+        </div>
+        <div class="col-sm-6" id="customers">
+          <h3>Ranking Cross Latent Semantic Analysis</h3>
+          {% for sum_CLSA in sum_tables_CLSA %} {{ sum_CLSA | safe }} {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
