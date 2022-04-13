@@ -18,6 +18,7 @@ remover = StopWordRemoverFactory().create_stop_word_remover()  # objek stopword
 translator = str.maketrans('', '', string.punctuation)
 
 
+
 def stemmerEN(text):
     porter = PorterStemmer()
     ## stop = set(stopwords.words('english')) #stopwods berguna untuk
