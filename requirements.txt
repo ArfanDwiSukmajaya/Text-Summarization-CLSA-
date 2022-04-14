@@ -36,13 +36,13 @@ click
 cloudpickle 
 clyent==1.2.1
 colorama 
-conda==4.3.16
-conda-build==3.21.4
+conda== 4.3.13
+conda-build==2.21.4
 conda-content-trust 
 conda-package-handling 
 conda-repo-cli 
 conda-token 
-conda-verify==3.4.2
+conda-verify==2.4.2
 contextlib2==0.6.0.post1
 cryptography 
 cycler==0.10.0
