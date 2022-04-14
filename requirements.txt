@@ -194,7 +194,7 @@ requests
 rope 
 rouge
 Rtree 
-ruamel-yaml-conda 
+# ruamel-yaml-conda 
 Sastrawi
 scikit-image
 scikit-learn 
