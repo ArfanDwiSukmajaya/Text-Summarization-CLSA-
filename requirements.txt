@@ -36,7 +36,7 @@ click
 cloudpickle 
 clyent==1.2.1
 colorama 
-conda== 4.3.13
+conda== 4.0.0
 conda-build==2.21.4
 conda-content-trust 
 conda-package-handling 
