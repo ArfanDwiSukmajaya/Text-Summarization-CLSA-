@@ -108,9 +108,6 @@ lxml
 matplotlib 
 
 
-
-mkl-random 
-
 mock 
 more-itertools 
 
