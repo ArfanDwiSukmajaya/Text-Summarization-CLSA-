@@ -38,10 +38,6 @@ cloudpickle
 colorama 
 
 
-conda-content-trust 
-conda-package-handling 
-conda-repo-cli 
-conda-token 
 
 
 cryptography 
