@@ -134,7 +134,7 @@ notebook
 numba 
 numexpr 
 # numpy 
-numpydoc 
+# numpydoc 
 olefile==0.46
 openpyxl 
 packaging 
