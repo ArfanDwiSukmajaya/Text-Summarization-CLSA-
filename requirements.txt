@@ -133,7 +133,7 @@ nose
 notebook 
 numba 
 numexpr 
-numpy 
+# numpy 
 numpydoc 
 olefile==0.46
 openpyxl 
